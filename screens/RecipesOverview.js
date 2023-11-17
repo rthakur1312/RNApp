@@ -39,13 +39,21 @@ const data = [
 
 
   const renderItem = ({ item }) => {
-    const tagsStyles = {
-      li: { marginBottom: 15 },
-    };
+    let tagsStyles = {};
+
+    if (item.key === 'ingredients') {
+      tagsStyles = {
+        li: { marginBottom: 10},
+      };
+    } else if (item.key === 'howToMake') {
+      tagsStyles = {
+        li: { marginBottom: 10,}, 
+      };
+    }
 
     return (
       <View style={{ marginVertical: 10, paddingHorizontal: 16 }}>
-        <Text style={{ fontSize: 18, marginBottom: 5, fontFamily: 'roboto-bold' }}>{item.title}</Text>
+        <Text style={{ fontSize: 18, marginBottom: 5, fontFamily: 'open-sans-bold' }}>{item.title}</Text>
         <HTML source={{ html: item.html }} tagsStyles={tagsStyles} />
       </View>
     );

@@ -64,7 +64,7 @@ function RecipesScreen({navigation}) {
           })
         }
         return (
-            <BrandCard title={itemData.item.attributes.title} onPress={pressHandler} />
+            <BrandCard title={itemData.item.attributes.title} brand={itemData.item.attributes.field_brand} onPress={pressHandler} />
         );
       }
 
