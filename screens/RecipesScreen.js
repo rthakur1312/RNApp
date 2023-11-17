@@ -22,7 +22,8 @@ function RecipesScreen({navigation}) {
         // Assuming 'Recipes' is the imported JSON data
         // Check if the data is truthy before proceeding
         if (Recipes && Recipes.data) {
-            setRecipes(Recipes.data);
+          const filteredRecipes = Recipes.data.slice(0,10)
+            setRecipes(filteredRecipes);
         } else {
           setError(new Error('Data is empty or undefined.'));
         }
@@ -64,7 +65,10 @@ function RecipesScreen({navigation}) {
           })
         }
         return (
-            <BrandCard title={itemData.item.attributes.title} brand={itemData.item.attributes.field_brand} onPress={pressHandler} />
+            <BrandCard title={itemData.item.attributes.title} 
+                        brand={itemData.item.attributes.field_brand} 
+                        image = { itemData.item.attributes.metatag[11].attributes.content}
+                        onPress={pressHandler} />
         );
       }
 

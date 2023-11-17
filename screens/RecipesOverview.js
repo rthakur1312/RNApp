@@ -24,6 +24,8 @@ function RecipesOverview({ route }) {
     setSelectedRecipe(recipe);
   }, []);
 
+  {selectedRecipe && console.log(selectedRecipe.attributes.metatag[11].attributes.content)}
+
   const scrollY = useRef(new Animated.Value(0)).current;
 
 
@@ -136,7 +138,7 @@ const data = [
             }}>
                 {/* Background Image */}
                 <Animated.Image 
-                    source={require('../assets/recipe_img.jpeg')} 
+                    source={{uri: selectedRecipe.attributes.metatag[11].attributes.content}} 
                     resizeMode="contain"
                     style={{
                         height: HEADER_HEIGHT,
@@ -185,6 +187,12 @@ const data = [
             {/* Info */}
 
              {/* Ingredients Title */}
+             <Text style={{
+              textAlign:'center',
+              fontSize: 20,
+              fontFamily: 'open-sans-bold',
+              marginVertical: 10
+             }}>{selectedRecipe.attributes.title}</Text>
           </View>
         }
           scrollEventThrottle={16}

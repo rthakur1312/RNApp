@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import {useFonts} from 'expo-font'
+import AppLoading from 'expo-app-loading'
 
 import RecipesOverview from './screens/RecipesOverview';
 import RecipesScreen from './screens/RecipesScreen';
@@ -12,12 +13,16 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
 
-  useFonts({
+  const [fontsLoaded] = useFonts({
     'roboto': require('./assets/fonts/Roboto-Regular.ttf'),
     'roboto-bold' : require('./assets/fonts/Roboto-Bold.ttf'),
     'open-sans' : require('./assets/fonts/OpenSans-Regular.ttf'),
     'open-sans-bold' : require('./assets/fonts/OpenSans-Bold.ttf'),
   })
+
+  if (!fontsLoaded) {
+    return null;
+  }
 
   return (
     <>
